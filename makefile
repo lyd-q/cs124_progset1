@@ -1,16 +1,19 @@
-CXX := g++
-CXXFLAGS := -std=c++11 -Wall -I./include
+CC = g++
+CFLAGS = -std=c++11 -Wall
+INCLUDES = -I.
 
-SOURCES := $(wildcard src/*.cpp)
-OBJECTS := $(SOURCES:.cpp=.o)
+SRCS = main.cpp graphs.cpp
+OBJS = $(SRCS:.cpp=.o)
 
-TARGET := progset
+TARGET = progset
 
-$(TARGET): $(OBJECTS)
-	$(CXX) $(CXXFLAGS) $^ -o $@
+all: $(TARGET)
+
+$(TARGET): $(OBJS)
+	$(CC) $(CFLAGS) $(INCLUDES) -o $(TARGET) $(OBJS)
 
 %.o: %.cpp
-	$(CXX) $(CXXFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 clean:
-	rm -f $(OBJECTS) $(TARGET)
+	rm -f $(OBJS) $(TARGET)

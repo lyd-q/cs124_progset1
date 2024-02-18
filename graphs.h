@@ -8,7 +8,11 @@
 
 using namespace std;
 
+void print_graph (vector<vector<pair<int, float> > > adj);
+void print_points (vector<pair<int, float> > points);
+
 vector<vector<pair<int, float> > > make_0d_graph(int n);
-void print_0d (vector<vector<pair<int, float> > > adj);
+vector<vector<pair<int, float> > > make_2d_graph(int n);
+
 
 #endif
