@@ -55,11 +55,10 @@ struct ufind {
         }
 
     }
-
 };
 
 
-int main() {
+int main(int argc, char** argv) {
     //get input 
     int flag, numpoints, numtrials, dimension;
     cin >> flag >> numpoints >> numtrials >> dimension;
@@ -69,6 +68,36 @@ int main() {
     print_graph(test_graph);
 
     //edge version
+
+    // kruskal's algorithm
+    int n = adj.size();
+    ufind myuf(n);
+    vector<pair<int, int>> tree(0);
+    // number of nodes?
+
+    // how to refer to number of adjaceny matrix
+    for (int u = 0; u < n; ++u) {
+        myuf.makeset(u);
+    }
+
+    //sort edges by weight?
+    // custom sorting by third element in each pair
+    sort(adj.begin(), adj.end(), [](auto &left, auto &right) {
+        return get<2>(lhs) < get<2>(rhs);
+    });
+
+    for (int e = 0; e < adj.size(); ++e) {
+        int u = get<0>(e);
+        int v = get<1>(e);
+        if (find(u) != find(v)) {
+            //insert edge into the tree
+             X.insert((u, v)); 
+             myuf.uni(u, v);
+        }
+    }
+
+    return tree;
+
     
 }
 
