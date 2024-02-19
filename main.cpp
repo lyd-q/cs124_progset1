@@ -1,5 +1,4 @@
 #include "graphs.h"
-
 #include <iostream>
 #include<vector>
 #include<string>
@@ -8,6 +7,57 @@
 // //compiling with gcc : g++-13 (name.cpp) -o name ??
 
 using namespace std;
+
+struct ufind {
+    //fields 
+    vector<pair<int, int>> arr;
+
+    //constructors (rank, parent)
+    ufind() {
+        arr = vector<pair<int, int>>();
+    }
+
+    ufind(int n){
+        arr.resize(n);
+    }
+
+    // methods 
+    void makeset(int x) {
+        arr[x].second = x;
+    }
+
+    int find(int x){
+        return arr[x].second;
+    }
+
+    int uni(int x, int y) {
+        int ypar = find(y);
+        int xpar = find(x);
+         //not in same set
+        if (arr[x].second != arr[y].second) {
+            // if x is bigger, x becomes parent
+            if(arr[x].first > arr[y].first) {
+                // reset all nodes in y's set to have find(x) as parent
+                for (int i = 0; i < arr.size(); ++i){
+                    if(find(i) == ypar) {
+                        arr[i].first = xpar;
+                    }
+                }
+            }
+            //else y is bigger, y becomes parent
+            else {
+                for (int i = 0; i < arr.size(); ++ i){
+                    if (find(i) == xpar) {
+                        arr[i].first = ypar;
+                    }
+                }
+            }
+        }
+
+    }
+
+};
+
 
 int main() {
     //get input 
