@@ -5,8 +5,6 @@
 #include<random>
 #include<algorithm>
 
-// //compiling with gcc : g++-13 (name.cpp) -o name ??
-
 using namespace std;
 struct ufind {
     //fields 
