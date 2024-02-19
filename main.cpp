@@ -70,7 +70,8 @@ int main(int argc, char** argv) {
     //edge version
 
     // kruskal's algorithm
-    int n = adj.size();
+    vector<vector<int, int>> edges;
+    int n = edges.size();
     ufind myuf(n);
     vector<pair<int, int>> tree(0);
     // number of nodes?
@@ -82,16 +83,16 @@ int main(int argc, char** argv) {
 
     //sort edges by weight?
     // custom sorting by third element in each pair
-    sort(adj.begin(), adj.end(), [](auto &left, auto &right) {
-        return get<2>(lhs) < get<2>(rhs);
+    sort(edges.begin(), edges.end(), [](auto &left, auto &right) {
+        return lhs[2] < rhs[2];
     });
 
-    for (int e = 0; e < adj.size(); ++e) {
-        int u = get<0>(e);
-        int v = get<1>(e);
-        if (find(u) != find(v)) {
+    for (int e = 0; e < edges.size(); ++e) {
+        int u = edges[e][0];
+        int v = edges[e][1];
+        if (myuf.find(u) != myuf.find(v)) {
             //insert edge into the tree
-             X.insert((u, v)); 
+             tree.push_back({u, v}); 
              myuf.uni(u, v);
         }
     }
