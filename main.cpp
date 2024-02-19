@@ -55,7 +55,8 @@ struct ufind {
 };
 
 float kruz(vector<tuple<int, int, float> > edges) {
-    // kruskal's algorithm    
+    // kruskal's algorithm   
+    float max = 0;
     int n = edges.size();
     ufind myuf(n);
     vector<pair<int, int> > tree(0);
@@ -80,10 +81,17 @@ float kruz(vector<tuple<int, int, float> > edges) {
             //insert edge into the tree
              tree.push_back({u, v}); 
              weight += get<2>(edges[e]);
+
+             //get the max edge weight
+             if(get<2>(edges[e]) > max){
+                max = get<2>(edges[e]);
+             }
+
              myuf.uni(u, v);
         }
     }
-    return weight;   
+    //return weight;   
+    return max;
 }
 
 int main(int argc, char** argv) {
