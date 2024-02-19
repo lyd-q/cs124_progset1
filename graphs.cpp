@@ -63,7 +63,7 @@ vector<tuple<int, int, float> > make_graph(int n, int dim) {
 }
 
 // int main() {
-//     vector<tuple<int, int, float> > graph = make_graph(5, 4);
+//     vector<tuple<int, int, float> > graph = make_graph(7, 4);
 //     for (int i = 0; i < graph.size(); i++) {
 //         auto [first, second, third] = graph[i];
 //         cout << "(" << first << ", " << second << "," << third << ")" << endl;   
