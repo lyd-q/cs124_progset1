@@ -5,6 +5,11 @@
         "iosfwd": "cpp",
         "iterator": "cpp",
         "string": "cpp",
-        "chrono": "cpp"
+        "chrono": "cpp",
+        "__node_handle": "cpp",
+        "__split_buffer": "cpp",
+        "array": "cpp",
+        "string_view": "cpp",
+        "unordered_map": "cpp"
     }
 }
