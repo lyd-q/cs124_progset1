@@ -6,8 +6,6 @@
 #include<algorithm>
 #include <iomanip>
 
-// //compiling with gcc : g++-13 (name.cpp) -o name ??
-
 using namespace std;
 struct ufind {
     //fields 
