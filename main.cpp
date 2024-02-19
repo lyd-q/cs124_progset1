@@ -3,6 +3,8 @@
 #include<vector>
 #include<string>
 #include<random>
+#include<algorithm>
+
 
 // //compiling with gcc : g++-13 (name.cpp) -o name ??
 
@@ -10,11 +12,11 @@ using namespace std;
 
 struct ufind {
     //fields 
-    vector<pair<int, int>> arr;
+    vector<pair<int, int> > arr;
 
     //constructors (rank, parent)
     ufind() {
-        arr = vector<pair<int, int>>();
+        arr = vector<pair<int, int> >();
     }
 
     ufind(int n){
@@ -23,37 +25,35 @@ struct ufind {
 
     // methods 
     void makeset(int x) {
+        arr[x].first = 0;
         arr[x].second = x;
     }
 
     int find(int x){
+        if (arr[x].second == x){
+            return x;
+        }
+        arr[x].second = find(arr[x].second);
         return arr[x].second;
     }
 
-    int uni(int x, int y) {
-        int ypar = find(y);
-        int xpar = find(x);
-         //not in same set
-        if (arr[x].second != arr[y].second) {
-            // if x is bigger, x becomes parent
-            if(arr[x].first > arr[y].first) {
-                // reset all nodes in y's set to have find(x) as parent
-                for (int i = 0; i < arr.size(); i++){
-                    if(find(i) == ypar) {
-                        arr[i].first = xpar;
-                    }
-                }
-            }
-            //else y is bigger, y becomes parent
-            else {
-                for (int i = 0; i < arr.size(); i++){
-                    if (find(i) == xpar) {
-                        arr[i].first = ypar;
-                    }
-                }
-            }
+    int link(int x, int y) {
+        if (arr[x].first > arr[y].first){
+            return link(y, x);
         }
+        else if (arr[x].first == arr[y].first){
+            arr[y].first += 1;
+        }
+        arr[x].second = y;
+        return y;
+    }
 
+    void uni(int x, int y) {
+        link(find(x), find(y));
+    }
+    
+    int get_rank(int x) {
+        return arr[x].first;
     }
 };
 
