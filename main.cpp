@@ -112,15 +112,6 @@ int main(int argc, char** argv) {
     cout << "Average: " << avg << endl;
 
 
-    
-
-    //adj list version
-    // vector<vector<pair<int, float> > > test_graph = make_graph(3, 2);
-    // print_graph(test_graph);
-
-    //edge version
-
-
     //test edge?
     // vector<tuple<int, int, float> > edges;
     // tuple<int, int, float> e1 = make_tuple(0, 1, 10.0);
