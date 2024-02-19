@@ -8,44 +8,6 @@
 
 using namespace std;
 
-//functions to print (for testing)
-//print adjacency list of graph
-void print_graph (vector<vector<pair<int, float> > > adj) {
-    cout << "Graph:" << endl;
-    for (int i = 0; i < adj.size(); i++) {
-        for (int j = 0; j < adj[i].size(); j++) {
-            cout << "(" << adj[i][j].first << ", " << adj[i][j].second << ")";
-        }
-        cout << endl;
-    }
-}
-
-//print 2d points vector
-void print_2d_points (vector<pair<float, float> > points) {
-    cout << "Vertices list: " << endl;
-    for (int i = 0; i < points.size(); i++) {
-        cout << "(" << points[i].first << ", " << points[i].second << ")";
-    }
-    cout << endl;
-}
-
-//print 3d points vector
-void print_3d_points (vector<vector<float> > points) {
-    cout << "Vertices list: " << endl;
-    for (int i = 0; i < points.size(); i++) {
-        cout << "(" << points[i][0] << ", " << points[i][1] << ", " << points[i][2] << ")";
-    }
-    cout << endl;
-}
-
-//print 4d points vector
-void print_4d_points (vector<vector<float> > points) {
-    cout << "Vertices list: " << endl;
-    for (int i = 0; i < points.size(); i++) {
-        cout << "(" << points[i][0] << ", " << points[i][1] << ", " << points[i][2] << ", " << points[i][3] << ")";
-    }
-    cout << endl;
-}
 
 // making first type graph (0-d)
 vector<vector<pair<int, float> > > make_0d_graph(int n) {
@@ -200,3 +162,41 @@ vector<vector<pair<int, float> > > make_4d_graph(int n) {
 
 
 
+// //functions to print (for testing)
+// //print adjacency list of graph
+// void print_graph (vector<vector<pair<int, float> > > adj) {
+//     cout << "Graph:" << endl;
+//     for (int i = 0; i < adj.size(); i++) {
+//         for (int j = 0; j < adj[i].size(); j++) {
+//             cout << "(" << adj[i][j].first << ", " << adj[i][j].second << ")";
+//         }
+//         cout << endl;
+//     }
+// }
+
+// //print 2d points vector
+// void print_2d_points (vector<pair<float, float> > points) {
+//     cout << "Vertices list: " << endl;
+//     for (int i = 0; i < points.size(); i++) {
+//         cout << "(" << points[i].first << ", " << points[i].second << ")";
+//     }
+//     cout << endl;
+// }
+
+// //print 3d points vector
+// void print_3d_points (vector<vector<float> > points) {
+//     cout << "Vertices list: " << endl;
+//     for (int i = 0; i < points.size(); i++) {
+//         cout << "(" << points[i][0] << ", " << points[i][1] << ", " << points[i][2] << ")";
+//     }
+//     cout << endl;
+// }
+
+// //print 4d points vector
+// void print_4d_points (vector<vector<float> > points) {
+//     cout << "Vertices list: " << endl;
+//     for (int i = 0; i < points.size(); i++) {
+//         cout << "(" << points[i][0] << ", " << points[i][1] << ", " << points[i][2] << ", " << points[i][3] << ")";
+//     }
+//     cout << endl;
+// }

@@ -5,7 +5,7 @@ INCLUDES = -I.
 SRCS = main.cpp graphs.cpp
 OBJS = $(SRCS:.cpp=.o)
 
-TARGET = progset
+TARGET = randmst
 
 all: $(TARGET)
 
