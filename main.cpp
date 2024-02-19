@@ -38,7 +38,7 @@ struct ufind {
             // if x is bigger, x becomes parent
             if(arr[x].first > arr[y].first) {
                 // reset all nodes in y's set to have find(x) as parent
-                for (int i = 0; i < arr.size(); ++i){
+                for (int i = 0; i < arr.size(); i++){
                     if(find(i) == ypar) {
                         arr[i].first = xpar;
                     }
@@ -46,7 +46,7 @@ struct ufind {
             }
             //else y is bigger, y becomes parent
             else {
-                for (int i = 0; i < arr.size(); ++ i){
+                for (int i = 0; i < arr.size(); i++){
                     if (find(i) == xpar) {
                         arr[i].first = ypar;
                     }
@@ -64,42 +64,59 @@ int main(int argc, char** argv) {
     cin >> flag >> numpoints >> numtrials >> dimension;
 
     //adj list version
-    vector<vector<pair<int, float> > > test_graph = make_graph(3, 2);
-    print_graph(test_graph);
+    // vector<vector<pair<int, float> > > test_graph = make_graph(3, 2);
+    // print_graph(test_graph);
 
     //edge version
 
-    // kruskal's algorithm
-    vector<vector<int, int>> edges;
+
+    //test edge?
+    vector<vector<int>> edges;
+    vector<int> e1 = {1, 2, 10};
+    vector<int> e2 = {2, 3, 10};
+    vector<int> e3 = {3, 4, 1};
+    vector<int> e4 = {4, 5, 1};
+    vector<int> e5 = {5, 1, 1};
+    vector<int> e6 = {1, 3, 1};
+    vector<int> e7 = {2, 5, 10};
+
+    edges.push_back(e1);
+    edges.push_back(e2);
+    edges.push_back(e3);
+    edges.push_back(e4);
+    edges.push_back(e5);
+    edges.push_back(e6);
+    edges.push_back(e7);
+
+    // kruskal's algorithm    
     int n = edges.size();
     ufind myuf(n);
     vector<pair<int, int>> tree(0);
+    int weight = 0;
     // number of nodes?
 
     // how to refer to number of adjaceny matrix
-    for (int u = 0; u < n; ++u) {
+    for (int u = 0; u < n; u++) {
         myuf.makeset(u);
     }
 
     //sort edges by weight?
     // custom sorting by third element in each pair
-    sort(edges.begin(), edges.end(), [](auto &left, auto &right) {
+    sort(edges.begin(), edges.end(), [](vector<int> &lhs, vector<int> &rhs) {
         return lhs[2] < rhs[2];
     });
 
-    for (int e = 0; e < edges.size(); ++e) {
+    for (int e = 0; e < edges.size(); e++) {
         int u = edges[e][0];
         int v = edges[e][1];
         if (myuf.find(u) != myuf.find(v)) {
             //insert edge into the tree
              tree.push_back({u, v}); 
+             weight += edges[e][2];
              myuf.uni(u, v);
         }
     }
-
-    return tree;
-
-    
+    return weight;   
 }
 
 
