@@ -6,6 +6,7 @@
 #include <random>
 #include <cmath>
 #include <stdexcept>
+#include <tuple>
 
 
 using namespace std;
