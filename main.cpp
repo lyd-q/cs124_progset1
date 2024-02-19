@@ -60,7 +60,7 @@ int kruz(vector<tuple<int, int, float> > edges) {
     int n = edges.size();
     ufind myuf(n);
     vector<pair<int, int> > tree(0);
-    int weight = 0;
+    float weight = 0.0;
     // number of nodes?
 
     // how to refer to number of adjaceny matrix
@@ -70,17 +70,17 @@ int kruz(vector<tuple<int, int, float> > edges) {
 
     //sort edges by weight?
     // custom sorting by third element in each pair
-    sort(edges.begin(), edges.end(), [](vector<int> &lhs, vector<int> &rhs) {
-        return lhs[2] < rhs[2];
+    sort(edges.begin(), edges.end(), [](tuple<int, int, float> &lhs, tuple<int, int, float> &rhs) {
+        return get<2>(lhs) < get<2>(rhs);
     });
 
     for (int e = 0; e < edges.size(); e++) {
-        int u = edges[e][0];
-        int v = edges[e][1];
+        int u = get<0>(edges[e]);
+        int v = get<1>(edges[e]);
         if (myuf.find(u) != myuf.find(v)) {
             //insert edge into the tree
              tree.push_back({u, v}); 
-             weight += edges[e][2];
+             weight += get<2>(edges[e]);
              myuf.uni(u, v);
         }
     }
@@ -101,43 +101,13 @@ int main(int argc, char** argv) {
 
     //test edge?
     vector<tuple<int, int, float> > edges;
-    vector<int> e1;
-    e1.push_back(0);
-    e1.push_back(1);
-    e1.push_back(10.0);
-
-
-
-    vector<int> e2;
-    e2.push_back(1);
-    e2.push_back(2);
-    e2.push_back(10.0);
-
-
-    vector<int> e3;
-    e3.push_back(2);
-    e3.push_back(3);
-    e3.push_back(1.0);
-
-    vector<int> e4;
-    e4.push_back(3);
-    e4.push_back(4);
-    e4.push_back(1.0);
-
-    vector<int> e5;
-    e5.push_back(4);
-    e5.push_back(0);
-    e5.push_back(1.0);
-
-    vector<int> e6;
-    e6.push_back(0);
-    e6.push_back(2);
-    e6.push_back(10.0);
-
-    vector<int> e7;
-    e7.push_back(1);
-    e7.push_back(4);
-    e7.push_back(1.0);
+    tuple<int, int, float> e1 = make_tuple(0, 1, 10.0);
+    tuple<int, int, float> e2 = make_tuple(1, 2, 10.0);
+    tuple<int, int, float> e3 = make_tuple(2, 3, 1.0);
+    tuple<int, int, float> e4 = make_tuple(3, 4, 1.0);
+    tuple<int, int, float> e5 = make_tuple(4, 0, 1.0);
+    tuple<int, int, float> e6 = make_tuple(0, 2, 10.0);
+    tuple<int, int, float> e7 = make_tuple(1,41, 1.0);
 
     edges.push_back(e1);
     edges.push_back(e2);
