@@ -1,5 +1,5 @@
-CC = g++
-CFLAGS = -std=c++11 -Wall
+CXX=g++-10 
+CXXFLAGS=-std=c++20 -O2 
 INCLUDES = -I.
 
 SRCS = main.cpp graphs.cpp

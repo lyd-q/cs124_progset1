@@ -6,7 +6,7 @@
             "name": "C++ Launch",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/test",
+            "program": "${workspaceFolder}/progset1",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
