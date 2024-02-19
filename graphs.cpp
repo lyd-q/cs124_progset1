@@ -7,6 +7,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <tuple>
+#include <chrono>
 
 
 using namespace std;
@@ -14,7 +15,7 @@ using namespace std;
 
 vector<tuple<int, int, float> > make_graph(int n, int dim) {
     //for random number generation
-    mt19937 rng(time(nullptr));
+    mt19937 rng(chrono::system_clock::now().time_since_epoch().count());
     uniform_real_distribution<float> dist(0.0, 1.0);
 
     //make vector of tuples

@@ -101,7 +101,8 @@ int main(int argc, char** argv) {
         sum += mst_weight;
         cout << "Trial " << i+1 << ": " << mst_weight << endl;
     }
-    float avg = sum / numtrials;
+    float numtrials_float = static_cast<float>(numtrials);
+    float avg = sum / numtrials_float;
     cout << avg << endl;
 
     //print graph edges
