@@ -13,7 +13,11 @@ struct heap {
 	//fields 
 	vector<int> arr;
 
-    //constructor 
+    //constructor
+    heap() {
+        arr = vector<pair<float, int>>();
+    }
+
     heap(int n){
         arr.resize(n);
     }
@@ -90,9 +94,13 @@ struct heap {
             N = p;
         }
     }
+
+    bool empty() {
+        return arr.empty();
+    }
 };
 
-int main()
+int main(int argc, char** argv)
 {   
     //get input 
     int flag, numpoints, numtrials, dimension;
@@ -100,5 +108,38 @@ int main()
 
     vector<vector<pair<int, float> > > test_graph = make_4d_graph(3);
     print_graph(test_graph);
+
+    // get input argument 
+    int n = stoi(argv[1]);
+
+    //now i run prims
+    heap myheap;
+    //list of distances
+    vector<float> dist(n, 1e9);
+
+    //visited set
+    vector<bool> vis(n, false);
+
+    //set S 
+    vector<int> S(0, 0);
+    //unordered set.? 
+
+    // start at s apparently 
+    dist[0] = 0;
+    myheap.insert(0);
+
+    while (!myheap.empty()) {
+        int u = ;
+        S.insert(u);
+
+        for (auto p: adj[u] && p) {
+
+        }
+    }
+
+
+
+
+
     return 0;
 }
