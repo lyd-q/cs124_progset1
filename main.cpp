@@ -4,6 +4,7 @@
 #include<string>
 #include<random>
 #include<algorithm>
+#include <iomanip>
 
 using namespace std;
 struct ufind {
@@ -90,24 +91,28 @@ int main(int argc, char** argv) {
     int flag, numpoints, numtrials, dimension;
     cin >> flag >> numpoints >> numtrials >> dimension;
     
-    int sum = 0;
+    float sum = 0;
     for (int i = 0; i < numtrials; i++) {
         //generate graph
         vector<tuple<int, int, float> > graph = make_graph(numpoints, dimension);
+
+        //print graph edges
+        // for (int i = 0; i < graph.size(); i++) {
+        //     cout << "(" << get<0>(graph[i]) << ", " << get<1>(graph[i]) << ", " << get<2>(graph[i]) << ")";
+        // }
+        // cout << endl;
+
         //run kruskals
         float mst_weight = kruz(graph);
         sum += mst_weight;
         cout << "Trial " << i+1 << ": " << mst_weight << endl;
     }
-    float numtrials_float = static_cast<float>(numtrials);
+    float numtrials_float = float(numtrials);
     float avg = sum / numtrials_float;
-    cout << avg << endl;
+    cout << "Average: " << avg << endl;
 
-    //print graph edges
-    // for (int i = 0; i < graph.size(); i++) {
-    //     cout << "(" << get<0>(graph[i]) << ", " << get<1>(graph[i]) << ", " << get<2>(graph[i]) << ")";
-    // }
-    // cout << endl;
+
+    
 
     //adj list version
     // vector<vector<pair<int, float> > > test_graph = make_graph(3, 2);
