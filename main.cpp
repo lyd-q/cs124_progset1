@@ -89,8 +89,11 @@ int kruz(vector<tuple<int, int, float> > edges) {
 
 int main(int argc, char** argv) {
     //get input 
-    int flag, numpoints, numtrials, dimension;
+    string
     cin >> flag >> numpoints >> numtrials >> dimension;
+    int flag, numpoints, numtrials, dimension;
+
+    vector<tuple<int, int, float> > g = make_graph(numpoints, dimension);
 
     //adj list version
     // vector<vector<pair<int, float> > > test_graph = make_graph(3, 2);
@@ -107,7 +110,7 @@ int main(int argc, char** argv) {
     tuple<int, int, float> e4 = make_tuple(3, 4, 1.0);
     tuple<int, int, float> e5 = make_tuple(4, 0, 1.0);
     tuple<int, int, float> e6 = make_tuple(0, 2, 10.0);
-    tuple<int, int, float> e7 = make_tuple(1,41, 1.0);
+    tuple<int, int, float> e7 = make_tuple(1, 4, 1.0);
 
     edges.push_back(e1);
     edges.push_back(e2);
@@ -117,6 +120,7 @@ int main(int argc, char** argv) {
     edges.push_back(e6);
     edges.push_back(e7);
 
+    cout << kruz(edges) << endl;
     return kruz(edges);
 
 }
