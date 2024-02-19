@@ -2,6 +2,7 @@
     "files.associations": {
         "iostream": "cpp",
         "vector": "cpp",
+<<<<<<< HEAD
         "iosfwd": "cpp",
         "iterator": "cpp",
         "string": "cpp",
@@ -11,5 +12,8 @@
         "array": "cpp",
         "string_view": "cpp",
         "unordered_map": "cpp"
+=======
+        "iosfwd": "cpp"
+>>>>>>> 267d77432d53df381a9967cd8f56f26e1dbeee05
     }
 }
