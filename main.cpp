@@ -55,7 +55,7 @@ struct ufind {
     }
 };
 
-int kruz(vector<tuple<int, int, float> > edges) {
+float kruz(vector<tuple<int, int, float> > edges) {
     // kruskal's algorithm    
     int n = edges.size();
     ufind myuf(n);
@@ -89,11 +89,26 @@ int kruz(vector<tuple<int, int, float> > edges) {
 
 int main(int argc, char** argv) {
     //get input 
-    string
-    cin >> flag >> numpoints >> numtrials >> dimension;
     int flag, numpoints, numtrials, dimension;
+    cin >> flag >> numpoints >> numtrials >> dimension;
+    
+    int sum = 0;
+    for (int i = 0; i < numtrials; i++) {
+        //generate graph
+        vector<tuple<int, int, float> > graph = make_graph(numpoints, dimension);
+        //run kruskals
+        float mst_weight = kruz(graph);
+        sum += mst_weight;
+        cout << "Trial " << i+1 << ": " << mst_weight << endl;
+    }
+    float avg = sum / numtrials;
+    cout << avg << endl;
 
-    vector<tuple<int, int, float> > g = make_graph(numpoints, dimension);
+    //print graph edges
+    // for (int i = 0; i < graph.size(); i++) {
+    //     cout << "(" << get<0>(graph[i]) << ", " << get<1>(graph[i]) << ", " << get<2>(graph[i]) << ")";
+    // }
+    // cout << endl;
 
     //adj list version
     // vector<vector<pair<int, float> > > test_graph = make_graph(3, 2);
@@ -103,24 +118,24 @@ int main(int argc, char** argv) {
 
 
     //test edge?
-    vector<tuple<int, int, float> > edges;
-    tuple<int, int, float> e1 = make_tuple(0, 1, 10.0);
-    tuple<int, int, float> e2 = make_tuple(1, 2, 10.0);
-    tuple<int, int, float> e3 = make_tuple(2, 3, 1.0);
-    tuple<int, int, float> e4 = make_tuple(3, 4, 1.0);
-    tuple<int, int, float> e5 = make_tuple(4, 0, 1.0);
-    tuple<int, int, float> e6 = make_tuple(0, 2, 10.0);
-    tuple<int, int, float> e7 = make_tuple(1, 4, 1.0);
+    // vector<tuple<int, int, float> > edges;
+    // tuple<int, int, float> e1 = make_tuple(0, 1, 10.0);
+    // tuple<int, int, float> e2 = make_tuple(1, 2, 10.0);
+    // tuple<int, int, float> e3 = make_tuple(2, 3, 1.0);
+    // tuple<int, int, float> e4 = make_tuple(3, 4, 1.0);
+    // tuple<int, int, float> e5 = make_tuple(4, 0, 1.0);
+    // tuple<int, int, float> e6 = make_tuple(0, 2, 10.0);
+    // tuple<int, int, float> e7 = make_tuple(1, 4, 1.0);
 
-    edges.push_back(e1);
-    edges.push_back(e2);
-    edges.push_back(e3);
-    edges.push_back(e4);
-    edges.push_back(e5);
-    edges.push_back(e6);
-    edges.push_back(e7);
+    // edges.push_back(e1);
+    // edges.push_back(e2);
+    // edges.push_back(e3);
+    // edges.push_back(e4);
+    // edges.push_back(e5);
+    // edges.push_back(e6);
+    // edges.push_back(e7);
 
-    cout << kruz(edges) << endl;
-    return kruz(edges);
+    // cout << kruz(edges) << endl;
+    // return kruz(edges);
 
 }
