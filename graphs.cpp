@@ -29,7 +29,7 @@ vector<tuple<int, int, float> > make_graph(int n, int dim) {
             for (int j = i+1; j < n; j++) {
                 float weight = dist(rng);
                 // if (weight < pow(n, -0.64)){
-                if (weight < pow(n, -0.50)){
+                if (weight < 20 * pow(n, -1.0)){
                     tuple<int, int, float> e = make_tuple(i, j, weight);
                     edges.push_back(e);
                 }
@@ -60,7 +60,7 @@ vector<tuple<int, int, float> > make_graph(int n, int dim) {
 
                 if (dim == 2) {
                     //if (weight < pow(n, -0.4)){
-                    if (weight < pow(n, -0.300)){
+                    if (weight < 4.0 * (pow(n, -0.5))){
                         tuple<int, int, float> e = make_tuple(i, j, weight);
                         edges.push_back(e);
                     }
@@ -68,7 +68,7 @@ vector<tuple<int, int, float> > make_graph(int n, int dim) {
 
                 else if (dim == 3) {
                     //if (weight < pow(n, -0.265)){
-                    if (weight < pow(n, -0.150)){
+                    if (weight < 3.0 * (pow(n, -1.0 / 3.0))){
                         tuple<int, int, float> e = make_tuple(i, j, weight);
                         edges.push_back(e);
                     }
@@ -76,7 +76,7 @@ vector<tuple<int, int, float> > make_graph(int n, int dim) {
 
                 else if (dim == 4) {
                     //if (weight < pow(n, -0.180)){
-                    if (weight < pow(n, -0.090)){
+                    if (weight < 2.0 * (pow(n, -1.0/4.0))){
                         tuple<int, int, float> e = make_tuple(i, j, weight);
                         edges.push_back(e);
                     }
