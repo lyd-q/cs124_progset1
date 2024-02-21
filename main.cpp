@@ -120,10 +120,12 @@ int main(int argc, char** argv) {
         //run kruskals
         float mst_weight = kruz(graph, numpoints);
         sum += mst_weight;
-        cout << "Trial " << i+1 << ": " << mst_weight << endl;
+        //cout << "Trial " << i+1 << ": " << mst_weight << endl;
     }
     float numtrials_float = float(numtrials);
     float avg = sum / numtrials_float;
-    cout << "Average: " << avg << endl;
+    //cout << "Average: " << avg << endl;
+
+    cout << avg << " " << numpoints << " " << numtrials << " " << dimension << endl;
 
 }

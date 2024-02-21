@@ -72,7 +72,7 @@ vector<tuple<int, int, float> > make_graph(int n, int dim) {
                 }
 
                 else if (dim == 4) {
-                    if (weight < pow(n, -0.188)){
+                    if (weight < pow(n, -0.180)){
                         tuple<int, int, float> e = make_tuple(i, j, weight);
                         edges.push_back(e);
                     }
