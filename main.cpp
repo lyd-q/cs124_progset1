@@ -94,9 +94,9 @@ float kruz(vector<tuple<int, int, float> > edges, int numpoints) {
         }
     }
     
-    if (mst_edge_count != numpoints-1) {
-        cout << "MST has less than n-1 edges: " << mst_edge_count << endl;
-    }
+    // if (mst_edge_count != numpoints-1) {
+    //     cout << "MST has less than n-1 edges: " << mst_edge_count << endl;
+    // }
     return weight;   
     // return max;
 }
