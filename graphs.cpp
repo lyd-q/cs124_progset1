@@ -94,4 +94,3 @@ vector<tuple<int, int, float> > make_graph(int n, int dim) {
 //         cout << "(" << first << ", " << second << "," << third << ")" << endl;   
 //     }
 // }
-

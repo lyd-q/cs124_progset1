@@ -5,6 +5,7 @@
 #include<random>
 #include<algorithm>
 #include <iomanip>
+#include <stdexcept>
 
 using namespace std;
 struct ufind {
@@ -54,7 +55,7 @@ struct ufind {
     }
 };
 
-float kruz(vector<tuple<int, int, float> > edges) {
+float kruz(vector<tuple<int, int, float> > edges, int numpoints) {
     // kruskal's algorithm   
     // float max = 0;
     // number of nodes?
@@ -75,21 +76,26 @@ float kruz(vector<tuple<int, int, float> > edges) {
         return get<2>(lhs) < get<2>(rhs);
     });
 
+    int mst_edge_count = 0;
     for (int e = 0; e < edges.size(); e++) {
         int u = get<0>(edges[e]);
         int v = get<1>(edges[e]);
         if (myuf.find(u) != myuf.find(v)) {
             //insert edge into the tree
-             tree.push_back({u, v}); 
-             weight += get<2>(edges[e]);
-
+            tree.push_back({u, v}); 
+            weight += get<2>(edges[e]);
+            mst_edge_count++;
              //get the max edge weight
             //  if(get<2>(edges[e]) > max){
             //     max = get<2>(edges[e]);
             //  }
 
-             myuf.uni(u, v);
+            myuf.uni(u, v);
         }
+    }
+    
+    if (mst_edge_count != numpoints-1) {
+        cout << "MST has less than n-1 edges: " << mst_edge_count << endl;
     }
     return weight;   
     // return max;
@@ -112,7 +118,7 @@ int main(int argc, char** argv) {
         // cout << endl;
 
         //run kruskals
-        float mst_weight = kruz(graph);
+        float mst_weight = kruz(graph, numpoints);
         sum += mst_weight;
         cout << "Trial " << i+1 << ": " << mst_weight << endl;
     }
