@@ -103,8 +103,13 @@ float kruz(vector<tuple<int, int, float> > edges, int numpoints) {
 
 int main(int argc, char** argv) {
     //get input 
-    int flag, numpoints, numtrials, dimension;
-    cin >> flag >> numpoints >> numtrials >> dimension;
+    // int flag, numpoints, numtrials, dimension;
+    // cin >> flag >> numpoints >> numtrials >> dimension;
+
+    // int flag = stoi(argv[1]);
+    int numpoints = stoi(argv[2]);
+    int numtrials = stoi(argv[3]);
+    int dimension = stoi(argv[4]);
     
     float sum = 0;
     for (int i = 0; i < numtrials; i++) {
