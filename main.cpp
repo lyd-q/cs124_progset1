@@ -56,12 +56,13 @@ struct ufind {
 
 float kruz(vector<tuple<int, int, float> > edges) {
     // kruskal's algorithm   
-    float max = 0;
+    // float max = 0;
+    // number of nodes?
     int n = edges.size();
     ufind myuf(n);
     vector<pair<int, int> > tree(0);
     float weight = 0.0;
-    // number of nodes?
+
 
     // how to refer to number of adjaceny matrix
     for (int u = 0; u < n; u++) {
@@ -83,15 +84,15 @@ float kruz(vector<tuple<int, int, float> > edges) {
              weight += get<2>(edges[e]);
 
              //get the max edge weight
-             if(get<2>(edges[e]) > max){
-                max = get<2>(edges[e]);
-             }
+            //  if(get<2>(edges[e]) > max){
+            //     max = get<2>(edges[e]);
+            //  }
 
              myuf.uni(u, v);
         }
     }
-    //return weight;   
-    return max;
+    return weight;   
+    // return max;
 }
 
 int main(int argc, char** argv) {
@@ -118,27 +119,5 @@ int main(int argc, char** argv) {
     float numtrials_float = float(numtrials);
     float avg = sum / numtrials_float;
     cout << "Average: " << avg << endl;
-
-
-    //test edge?
-    // vector<tuple<int, int, float> > edges;
-    // tuple<int, int, float> e1 = make_tuple(0, 1, 10.0);
-    // tuple<int, int, float> e2 = make_tuple(1, 2, 10.0);
-    // tuple<int, int, float> e3 = make_tuple(2, 3, 1.0);
-    // tuple<int, int, float> e4 = make_tuple(3, 4, 1.0);
-    // tuple<int, int, float> e5 = make_tuple(4, 0, 1.0);
-    // tuple<int, int, float> e6 = make_tuple(0, 2, 10.0);
-    // tuple<int, int, float> e7 = make_tuple(1, 4, 1.0);
-
-    // edges.push_back(e1);
-    // edges.push_back(e2);
-    // edges.push_back(e3);
-    // edges.push_back(e4);
-    // edges.push_back(e5);
-    // edges.push_back(e6);
-    // edges.push_back(e7);
-
-    // cout << kruz(edges) << endl;
-    // return kruz(edges);
 
 }
