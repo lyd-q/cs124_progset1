@@ -70,7 +70,7 @@ float kruz(vector<tuple<int, int, float> > edges, int numpoints) {
         myuf.makeset(u);
     }
 
-    //sort edges by weight?
+    //sort edges by weight
     // custom sorting by third element in each pair
     sort(edges.begin(), edges.end(), [](tuple<int, int, float> &lhs, tuple<int, int, float> &rhs) {
         return get<2>(lhs) < get<2>(rhs);
@@ -85,7 +85,9 @@ float kruz(vector<tuple<int, int, float> > edges, int numpoints) {
             tree.push_back({u, v}); 
             weight += get<2>(edges[e]);
             mst_edge_count++;
-             //get the max edge weight
+
+            //for edge pruning function generation
+            //get the max edge weight
             //  if(get<2>(edges[e]) > max){
             //     max = get<2>(edges[e]);
             //  }
@@ -102,11 +104,6 @@ float kruz(vector<tuple<int, int, float> > edges, int numpoints) {
 }
 
 int main(int argc, char** argv) {
-    //get input 
-    // int flag, numpoints, numtrials, dimension;
-    // cin >> flag >> numpoints >> numtrials >> dimension;
-
-    // int flag = stoi(argv[1]);
     int numpoints = stoi(argv[2]);
     int numtrials = stoi(argv[3]);
     int dimension = stoi(argv[4]);
@@ -115,12 +112,6 @@ int main(int argc, char** argv) {
     for (int i = 0; i < numtrials; i++) {
         //generate graph
         vector<tuple<int, int, float> > graph = make_graph(numpoints, dimension);
-
-        //print graph edges
-        // for (int i = 0; i < graph.size(); i++) {
-        //     cout << "(" << get<0>(graph[i]) << ", " << get<1>(graph[i]) << ", " << get<2>(graph[i]) << ")";
-        // }
-        // cout << endl;
 
         //run kruskals
         float mst_weight = kruz(graph, numpoints);
